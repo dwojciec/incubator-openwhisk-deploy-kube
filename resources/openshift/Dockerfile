@@ -1,5 +1,7 @@
 FROM registry.access.redhat.com/rhscl/nginx-112-rhel7:latest
 
+USER root
+
 RUN mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/amd64/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/mac/386/ && \
@@ -14,6 +16,9 @@ ADD https://github.com/apache/incubator-openwhisk-cli/releases/download/latest/O
 ADD https://github.com/apache/incubator-openwhisk-cli/releases/download/latest/OpenWhisk_CLI-latest-mac-amd64.zip /etc/nginx/cli/go/download/mac/amd64/wsk.zip
 ADD https://github.com/apache/incubator-openwhisk-cli/releases/download/latest/OpenWhisk_CLI-latest-windows-386.zip /etc/nginx/cli/go/download/windows/386/wsk.zip
 
+RUN chown -R 1001:0 /opt/app-root && \
+    chmod -R a+rwx  /opt/app-root && \
+    rpm-file-permissions
 # Untar all of the files
 RUN unzip /etc/nginx/cli/go/download/linux/386/wsk.tgz -d /etc/nginx/cli/go/download/linux/386
 RUN unzip /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -d /etc/nginx/cli/go/download/linux/amd64
@@ -28,3 +33,4 @@ RUN rm /etc/nginx/cli/go/download/mac/386/wsk.zip
 RUN rm /etc/nginx/cli/go/download/mac/amd64/wsk.zip
 RUN rm /etc/nginx/cli/go/download/windows/386/wsk.zip
 
+USER 1001
