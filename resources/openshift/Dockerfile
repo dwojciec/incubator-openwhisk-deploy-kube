@@ -4,7 +4,7 @@ RUN mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/amd64/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/mac/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/mac/amd64/ && \
-    mkdir -o /opt/app-root/etc/nginx/cli/go/download/windows/386 \
+    mkdir -p /opt/app-root/etc/nginx/cli/go/download/windows/386 \
     chown -R 1001:0 /opt/app-root
 
 # Download all of the OpenWhisk CLIs
