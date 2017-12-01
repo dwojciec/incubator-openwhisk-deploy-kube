@@ -27,8 +27,8 @@ RUN tar zxvf /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -C /etc/nginx/cli/go
 #RUN unzip /etc/nginx/cli/go/download/windows/386/wsk.zip -d /etc/nginx/cli/go/download/windows/386
 
 # Remove extra zip file
-RUN rm /etc/nginx/cli/go/download/linux/386/wsk.tgz
-#RUN rm /etc/nginx/cli/go/download/linux/amd64/wsk.tgz
+#RUN rm /etc/nginx/cli/go/download/linux/386/wsk.tgz
+RUN rm /etc/nginx/cli/go/download/linux/amd64/wsk.tgz
 #RUN rm /etc/nginx/cli/go/download/mac/386/wsk.zip
 #RUN rm /etc/nginx/cli/go/download/mac/amd64/wsk.zip
 #RUN rm /etc/nginx/cli/go/download/windows/386/wsk.zip
