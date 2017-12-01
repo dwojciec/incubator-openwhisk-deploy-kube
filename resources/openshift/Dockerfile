@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/rhscl/nginx-112-rhel7:latest
 
-#USER root
+USER root
 
 RUN mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/amd64/ && \
@@ -33,4 +33,6 @@ RUN rm /etc/nginx/cli/go/download/linux/386/wsk.tgz
 #RUN rm /etc/nginx/cli/go/download/mac/amd64/wsk.zip
 #RUN rm /etc/nginx/cli/go/download/windows/386/wsk.zip
 
-#USER 1001
+USER 1001
+
+
