@@ -1,4 +1,4 @@
-FROM nginx-112-rhel7:latest
+FROM registry.access.redhat.com/rhscl/nginx-112-rhel7:latest
 
 RUN mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/amd64/ && \
