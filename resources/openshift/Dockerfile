@@ -20,8 +20,8 @@ RUN chown -R 1001:0 /opt/app-root && \
     chmod -R a+rwx  /opt/app-root && \
     rpm-file-permissions
 # Untar all of the files
-RUN unzip /etc/nginx/cli/go/download/linux/386/wsk.tgz -d /etc/nginx/cli/go/download/linux/386
-RUN unzip /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -d /etc/nginx/cli/go/download/linux/amd64
+RUN tar zxvf /etc/nginx/cli/go/download/linux/386/wsk.tgz -C /etc/nginx/cli/go/download/linux/386
+RUN tar zxvf /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -C /etc/nginx/cli/go/download/linux/amd64
 RUN unzip /etc/nginx/cli/go/download/mac/386/wsk.zip -d /etc/nginx/cli/go/download/mac/386
 RUN unzip /etc/nginx/cli/go/download/mac/amd64/wsk.zip -d /etc/nginx/cli/go/download/mac/amd64
 RUN unzip /etc/nginx/cli/go/download/windows/386/wsk.zip -d /etc/nginx/cli/go/download/windows/386
