@@ -7,7 +7,9 @@ RUN mkdir -p /opt/app-root/etc/nginx/cli/go/download/linux/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/mac/386/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/mac/amd64/ && \
     mkdir -p /opt/app-root/etc/nginx/cli/go/download/windows/386 && \
-    chown -R 1001:0 /opt/app-root
+    mkdir -p /openwhisk_config && \
+    mkdir -p /logs && \
+    chown -R 1001:0 /opt/app-root /openwhisk_config /logs
 
 # Download all of the OpenWhisk CLIs
 ADD https://github.com/apache/incubator-openwhisk-cli/releases/download/latest/OpenWhisk_CLI-latest-linux-386.tgz /etc/nginx/cli/go/download/linux/386/wsk.tgz
@@ -20,11 +22,11 @@ RUN chown -R 1001:0 /opt/app-root && \
     chmod -R a+rwx  /opt/app-root && \
     rpm-file-permissions
 # Untar all of the files
-RUN tar zxvf /etc/nginx/cli/go/download/linux/386/wsk.tgz -C /etc/nginx/cli/go/download/linux/386
-RUN tar zxvf /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -C /etc/nginx/cli/go/download/linux/amd64
-RUN unzip /etc/nginx/cli/go/download/mac/386/wsk.zip -d /etc/nginx/cli/go/download/mac/386
-RUN unzip /etc/nginx/cli/go/download/mac/amd64/wsk.zip -d /etc/nginx/cli/go/download/mac/amd64
-RUN unzip /etc/nginx/cli/go/download/windows/386/wsk.zip -d /etc/nginx/cli/go/download/windows/386
+RUN tar zxvf /etc/nginx/cli/go/download/linux/386/wsk.tgz -C /opt/app-root/etc/nginx/cli/go/download/linux/386
+RUN tar zxvf /etc/nginx/cli/go/download/linux/amd64/wsk.tgz -C /opt/app-root/etc/nginx/cli/go/download/linux/amd64
+RUN unzip /etc/nginx/cli/go/download/mac/386/wsk.zip -d /opt/app-root/etc/nginx/cli/go/download/mac/386
+RUN unzip /etc/nginx/cli/go/download/mac/amd64/wsk.zip -d /opt/app-root/etc/nginx/cli/go/download/mac/amd64
+RUN unzip /etc/nginx/cli/go/download/windows/386/wsk.zip -d /opt/app-root/etc/nginx/cli/go/download/windows/386
 
 # Remove extra zip file
 RUN rm /etc/nginx/cli/go/download/linux/386/wsk.tgz
